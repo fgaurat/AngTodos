@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { TodoService } from './todo.service';
 import { TodoListComponent } from './todo-list/todo-list.component';
-import { MatTableModule,  MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatTableModule,  MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatInputModule } from '@angular/material';
+import { TodoFormComponent } from './todo-form/todo-form.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -12,11 +15,18 @@ import { MatTableModule,  MatButtonModule, MatCheckboxModule } from '@angular/ma
     HttpClientModule,
     MatTableModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    FormsModule
   ],
-  declarations: [TodoListComponent],
+  declarations: [TodoListComponent, TodoFormComponent],
   exports: [
-    TodoListComponent
+    TodoListComponent,
+    TodoFormComponent
   ],
   providers: [TodoService]
 })
