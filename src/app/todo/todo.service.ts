@@ -19,4 +19,8 @@ export class TodoService {
     return this.http.delete<Todo>(url);
   }
 
+  updateTodo(todo: Todo): Observable<Todo> {
+    return this.http.put<Todo>(environment.url_todos, todo);
+  }
+
 }

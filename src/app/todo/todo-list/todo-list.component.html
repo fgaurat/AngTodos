@@ -18,13 +18,13 @@
 
     <ng-container matColumnDef="theDate">
       <mat-header-cell *matHeaderCellDef> theDate </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.theDate | date}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.theDate}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="done">
       <mat-header-cell *matHeaderCellDef> Done? </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <mat-checkbox [checked]="element.done"></mat-checkbox>
+        <mat-checkbox [checked]="element.done" (change)=setDone(element)></mat-checkbox>
       </mat-cell>
     </ng-container>
 

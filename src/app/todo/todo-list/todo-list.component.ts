@@ -31,6 +31,11 @@ export class TodoListComponent implements OnInit {
     this.todos$.subscribe( todos => this.dataSource.data = todos);
   }
 
+  setDone(todo:Todo){
+    todo.done = !todo.done;
+    this.todoService.updateTodo(todo).subscribe();
+
+  }
 
   delete(element: Todo) {
     this.todoService
