@@ -1,3 +1,42 @@
-<p *ngFor="let todo of todos$ | async">
-{{todo.action}} - {{todo.dueDate}}
-</p>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.action}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dueDate">
+      <mat-header-cell *matHeaderCellDef> dueDate </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dueDate | date:"d/MM/y hh:mm:ss"}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="theDate">
+      <mat-header-cell *matHeaderCellDef> theDate </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.theDate | date}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="done">
+      <mat-header-cell *matHeaderCellDef> Done? </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [checked]="element.done"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warn" (click)="delete(element)" >Delete</button>
+
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
