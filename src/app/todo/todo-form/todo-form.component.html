@@ -1,5 +1,5 @@
 <div class="example-container">
-  <form>
+  <form (ngSubmit)="create()">
 
     <mat-form-field>
       <input matInput placeholder="Action" [(ngModel)] = "todo.action" name="todoAction">
@@ -11,7 +11,7 @@
         <mat-datepicker #todoDueDate></mat-datepicker>
     </mat-form-field>
 
-    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button color="primary" type="submit">Primary</button>
 
 
   </form>

@@ -23,4 +23,8 @@ export class TodoService {
     return this.http.put<Todo>(environment.url_todos, todo);
   }
 
+  createTodo(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>(environment.url_todos, todo);
+  }
+
 }
