@@ -52,7 +52,8 @@ export class TodoListComponent implements OnInit {
   }
 
   update(element: Todo){
-    this.message.updateTodo(element);
+    const clone = Object.assign({},element);
+    this.message.updateTodo(clone);
   }
 
 }

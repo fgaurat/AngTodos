@@ -15,16 +15,26 @@ export class TodoFormComponent implements OnInit {
   constructor(private todoService: TodoService, private message: MessageService) { }
 
   ngOnInit() {
-    this.message.onUpdateTodo$.subscribe(todo => this.todo = todo);
+    this.message.onUpdateTodo$.subscribe(todo => {
+
+      this.todo = todo;
+      //this.todo.dueDate = todo.theDate;
+    });
 
   }
 
   create(){
     const d: Date = new Date(this.todo.dueDate);
     this.todo.dueDate = d.getTime();
+    // this.todoService.createTodo(this.todo).subscribe(_ => {
+    //   this.todo = new Todo();
+    // });
     this.todoService.createTodo(this.todo).subscribe(_ => {
       this.message.newTodo();
+      this.todo = new Todo();
     });
+
+
   }
 
 }

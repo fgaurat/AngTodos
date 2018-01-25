@@ -5,9 +5,11 @@ import { TodoService } from './todo.service';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { MatTableModule,  MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 import { TodoFormComponent } from './todo-form/todo-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from '../message.service';
+import { TodoReactiveFormComponent } from './todo-reactive-form/todo-reactive-form.component';
+import { FormBuilder } from '@angular/forms/src/form_builder';
 
 
 @NgModule({
@@ -22,13 +24,15 @@ import { MessageService } from '../message.service';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [TodoListComponent, TodoFormComponent],
+  declarations: [TodoListComponent, TodoFormComponent, TodoReactiveFormComponent],
   exports: [
     TodoListComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    TodoReactiveFormComponent
   ],
-  providers: [TodoService,MessageService]
+  providers: [TodoService, MessageService]
 })
 export class TodoModule { }

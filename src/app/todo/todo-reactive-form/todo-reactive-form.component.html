@@ -1,18 +1,16 @@
-<div class="example-container">
-  <form (ngSubmit)="create()">
 
+<form [formGroup] = "todoForm" (ngSubmit)="create();">
     <mat-form-field>
-      <input matInput placeholder="Action" [(ngModel)] = "todo.action" name="todoAction">
+        <input matInput placeholder="Action"  formControlName="todoAction">
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput [matDatepicker]="todoDueDate"  [(ngModel)] = "todo.dueDate" name="todoDueDate">
+        <input matInput [matDatepicker]="todoDueDate" formControlName="todoDueDate">
         <mat-datepicker-toggle matSuffix [for]="todoDueDate"></mat-datepicker-toggle>
         <mat-datepicker #todoDueDate></mat-datepicker>
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit">Ok</button>
 
+</form>
 
-  </form>
-</div>
