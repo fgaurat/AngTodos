@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo';
 import { TodoService } from '../todo.service';
+import { MessageService } from '../../message.service';
 
 @Component({
   selector: 'app-todo-form',
@@ -11,7 +12,7 @@ export class TodoFormComponent implements OnInit {
 
   public todo: Todo = new Todo();
 
-  constructor(private todoService:TodoService) { }
+  constructor(private todoService:TodoService, private message: MessageService) { }
 
   ngOnInit() {
   }
@@ -19,7 +20,9 @@ export class TodoFormComponent implements OnInit {
   create(){
     const d: Date = new Date(this.todo.dueDate);
     this.todo.dueDate = d.getTime();
-    this.todoService.createTodo(this.todo).subscribe();
+    this.todoService.createTodo(this.todo).subscribe(_ => {
+      this.message.newTodo();
+    });
   }
 
 }

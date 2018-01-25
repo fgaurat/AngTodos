@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { Todo } from '../todo';
 import {MatTableDataSource} from '@angular/material';
+import { MessageService } from '../../message.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -17,21 +18,25 @@ export class TodoListComponent implements OnInit {
 
   public todos$: Observable<Todo[]>;
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService, private message: MessageService) { }
 
   ngOnInit() {
     this.todos$ = this.todoService.getTodos().pipe(
       map(todos => {
-        for(let todo of todos){
+        for(const todo of todos){
           todo.theDate = new Date(todo.dueDate);
         }
         return todos;
       })
     );
+
     this.todos$.subscribe( todos => this.dataSource.data = todos);
+    this.message.onNewTodo$.pipe(
+      switchMap(_ => this.todoService.getTodos())
+    ).subscribe(todos => this.dataSource.data = todos)
   }
 
-  setDone(todo:Todo){
+  setDone(todo: Todo) {
     todo.done = !todo.done;
     this.todoService.updateTodo(todo).subscribe();
 

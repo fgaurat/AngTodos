@@ -7,6 +7,7 @@ import { MatTableModule,  MatButtonModule, MatCheckboxModule, MatFormFieldModule
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessageService } from '../message.service';
 
 
 @NgModule({
@@ -28,6 +29,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TodoListComponent,
     TodoFormComponent
   ],
-  providers: [TodoService]
+  providers: [TodoService,MessageService]
 })
 export class TodoModule { }
