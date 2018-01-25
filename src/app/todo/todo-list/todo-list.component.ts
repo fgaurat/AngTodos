@@ -51,4 +51,8 @@ export class TodoListComponent implements OnInit {
     console.log(element);
   }
 
+  update(element: Todo){
+    this.message.updateTodo(element);
+  }
+
 }
